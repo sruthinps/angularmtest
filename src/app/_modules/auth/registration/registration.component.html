@@ -6,6 +6,9 @@
                 <div>
                     <h5 style="text-align:center">Please Fill up Below Form</h5>
                     <div class="col">
+                        <div *ngIf="error" style="padding-top: 0px;text-align: center;">
+                            <div><span style="color: red;">{{error}}</span></div>
+                        </div>
                         <div class="columns">
                             <input id="username" type="text" autocomplete="on" formControlName="username"
                                 [(ngModel)]="signUpUser.user_firstname" placeholder="First Name" class="input-field"

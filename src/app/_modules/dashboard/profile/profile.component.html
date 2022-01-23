@@ -1,5 +1,4 @@
 <div class="about-section" *ngIf="loggedUser">
-    <button type="button" (click)="logOut()">Log out</button>
     <h1>{{loggedUser.first_name | titlecase}}{{loggedUser.last_name}}</h1>
     <p>{{loggedUser.email}}</p>
     <p>{{loggedUser.phone}}</p>

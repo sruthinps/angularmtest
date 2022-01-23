@@ -75,37 +75,60 @@ export class RegistrationComponent implements OnInit {
   async preSave(): Promise<boolean> {
 
     if (!this.signUpUser.user_firstname || this.signUpUser.user_firstname == '') {
-
-      return false
-    }
-
-    if (!this.signUpUser.email || this.signUpUser.email == '') {
-
-      return false
-    }
-
-    if (!this.signUpUser.user_phone || this.signUpUser.user_phone.toString().trim() == '') {
-
+      this.error = "First Name Required"
+      setTimeout(() => {
+        this.error = "";
+      },1500)
       return false
     }
 
     if (!this.signUpUser.job_role || this.signUpUser.job_role.toString() == '') {
-
+      this.error = "Job Role Required"
+      setTimeout(() => {
+        this.error = "";
+      },1500)
       return false
     }
 
-    if (!this.userPassword.pass || this.userPassword.pass == '') {
+    if (!this.signUpUser.email || this.signUpUser.email == '') {
+      this.error = "Email Id Required"
+      setTimeout(() => {
+        this.error = "";
+      },1500)
+      return false
+    }
 
+    if (!this.signUpUser.user_phone || this.signUpUser.user_phone.toString().trim() == '') {
+      this.error = "Phone Number Required"
+      setTimeout(() => {
+        this.error = "";
+      },1500)
+      return false
+    }
+
+   
+
+    if (!this.userPassword.pass || this.userPassword.pass == '') {
+      this.error = "Password Required"
+      setTimeout(() => {
+        this.error = "";
+      },1500)
       return false
     }
 
     if (!this.userPassword.confpass || this.userPassword.confpass == '') {
-
+      this.error = "Confirm Password Required"
+      setTimeout(() => {
+        this.error = "";
+      },1500)
       return false
     }
 
     if (this.userPassword.pass != this.userPassword.confpass) {
-
+      this.error = "Password and Confirm Password Do not Match"
+      setTimeout(() => {
+        this.error = "";
+      },1500)
       return false;
     }
 
@@ -114,9 +137,9 @@ export class RegistrationComponent implements OnInit {
 
   async onSubmit() {
 
-    // if (!(await this.preSave())) {
-    //   return;
-    // }
+    if (!(await this.preSave())) {
+      return;
+    }
 
     this.loading = true;
     this.signUpUser.user_password = this.userPassword.pass;
