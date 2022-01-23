@@ -1,0 +1,53 @@
+<div class="login">
+    <div class="login_box">
+        <section class="section text-center">
+            <div class="inner-block">
+                <div>
+                    <div *ngIf="error" style="padding-top: 0px;text-align: center;">
+                        <div><span style="color: red;">{{error}}</span></div>
+                    </div>
+                    <div>
+                        <h2>Login</h2>
+                    </div>
+
+                    <br>
+
+                    <form [formGroup]="loginForm" class="login-form" (ngSubmit)="onSubmit()">
+
+
+                        <div>
+                            <div class="spacing">
+                                <label for="username">Email Id</label><br>
+                            </div>
+                            <input id="username" type="text" id="username" autocomplete="on" formControlName="username"
+                                [(ngModel)]="user.username" class="input-field" />
+                        </div>
+
+                        <div>
+                            <label for="password">Password</label><br>
+                            <input type="password" id="password" autocomplete="off" formControlName="password"
+                                [(ngModel)]="user.password" class="input-field" />
+                            <div class="spacing">
+                                <label>Need an account ?</label><br>
+                                <span style="color: green;"><a [routerLink]="['/auth/register']">Sign
+                                        Up</a></span>
+                            </div>
+                        </div>
+                        <br>
+
+                        <div>
+                            <button type="submit" class="btn" (onClick)="onSubmit()" label="Login">
+                                Login
+                            </button><br />
+
+
+                            <div class="center">
+                                <a [routerLink]="['/auth/forgot-password']">Forgot Password</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

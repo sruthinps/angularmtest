@@ -1,0 +1,83 @@
+<div class="login">
+    <div class="login_box">
+        <div class="container">
+            <form [formGroup]="registerForm" class="login-form" (ngSubmit)="onSubmit()" *ngIf="registerForm">
+                <br>
+                <div>
+                    <h5 style="text-align:center">Please Fill up Below Form</h5>
+                    <div class="col">
+                        <div class="columns">
+                            <input id="username" type="text" autocomplete="on" formControlName="username"
+                                [(ngModel)]="signUpUser.user_firstname" placeholder="First Name" class="input-field"
+                                style="width: 50%;" />
+
+                            <input id="lastname" type="text" autocomplete="on" formControlName="lastname"
+                                [(ngModel)]="signUpUser.user_lastname" placeholder="Last Name" class="input-field"
+                                style="width: 50%;" />
+                        </div>
+
+                        <div class="columns">
+                            <div style="width: 50%;">
+                                <label>Gender</label><br>
+                                <label style="font-weight: 400;">
+                                    Male
+                                    <input type="radio" id="male" name="gender" value="M" checked
+                                        (change)="genderChange('M')">
+                                </label>
+                                <label style="font-weight: 400;">
+                                    Female
+                                    <input type="radio" id="female" name="gender" value="F"
+                                        (change)="genderChange('F')">
+                                </label>
+                            </div>
+
+
+                            <select formControlName="jobRole" [(ngModel)]="signUpUser.job_role" class="input-field"
+                                style="width: 50%;">
+                                <option *ngFor="let job of jobroleList" [value]="job.value">{{job.label}}</option>
+                            </select>
+                        </div>
+
+                        <div class="columns">
+                            <input id="email" type="text" autocomplete="on" formControlName="email"
+                                [(ngModel)]="signUpUser.email" placeholder="Email Id" (change)="onChangeEmailId()"
+                                style="width: 50%;" class="input-field" />
+                            <br><br>
+
+                            <input id="phone" type="text" autocomplete="on" formControlName="phone"
+                                [(ngModel)]="signUpUser.user_phone" placeholder="Phone Number" style="width: 50%;"
+                                class="input-field" />
+                        </div>
+
+
+                        <div class="columns">
+                            <textarea id="address" formControlName="address" rows="4" cols="50"
+                                [(ngModel)]="signUpUser.user_address" placeholder="Address..." class="area"></textarea>
+                        </div>
+
+                        <div class="columns">
+                            <input type="password" autocomplete="off" formControlName="password"
+                                [(ngModel)]="userPassword.pass" placeholder="Password" class="input-field"
+                                style="width: 50%;" />
+
+                            <input type="password" autocomplete="off" formControlName="confPass"
+                                [(ngModel)]="userPassword.confpass" placeholder="Confirm password" class="input-field"
+                                style="width: 50%;" />
+                        </div>
+
+
+                        <div class="instancebutton">
+                            <button [disabled]="loading" class="btn" style="width: 50%" [routerLink]="['/auth/login']">
+                                Go Back
+                            </button>
+                            <button type="submit" [disabled]="loading" class="btn" style="width: 50%">
+                                Register
+                            </button>
+                        </div>
+                        <br><br><br>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
